@@ -115,5 +115,12 @@ echo "`uname -o` (`uname -sr`)"
 date
 echo -e ""; cal;
 
+#PS1
 export PS1="\[\e[01;32m\]\u@\h \[\e[01;34m\]\w `if [ $? = 0 ]; then echo -e '\[\e[01;32m\]'; else echo -e '\[\e[01;31m\]'; fi`$\[\e[00m\] "
 
+#Colors
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+        export TERM='xterm-256color'
+else
+        export TERM='xterm-color'
+fi

@@ -6,15 +6,12 @@ alias home='cd ~'
 alias desktop='cd ~/Desktop'
 alias downloads='cd ~/Downloads'
 
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get upgrade'
-alias distupgrade='sudo apt-get dist-upgrade'
+alias update='sudo pacman -Sy'
+alias upgrade='sudo pacman -Syu'
 
-alias install='sudo apt-get install '
-alias remove='sudo apt-get remove '
-alias autoremove='sudo apt-get autoremove'
-alias purge='sudo apt-get purge '
-alias search='apt-cache search '
+alias install='sudo pacman -S '
+alias remove='sudo pacman -R '
+alias autoremove='sudo pacman -Rns $(pacman -Qtdq)'
 
 function exportproxy() 
 {
@@ -39,18 +36,6 @@ function clearproxy()
 alias exportproxy=exportproxy
 alias clearproxy=clearproxy
 
-alias emacs='emacs -nw'
-
-_apt_install_complete() {
-    mapfile -t COMPREPLY < <(apt-cache --no-generate pkgnames "$2");
-}
-complete -F _apt_install_complete install
-
-_apt_remove_complete() {
-	mapfile -t COMPREPLY < <(dpkg --get-selections | sed 's/[ \t]*install//');
-}
-complete -F _apt_remove_complete remove
-complete -F _apt_remove_complete autoremove
-complete -F _apt_remove_complete purge
-
+alias vi='vim'
 alias python='python3'
+alias hibernate='systemctl hibernate'
