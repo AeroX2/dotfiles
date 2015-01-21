@@ -8,7 +8,7 @@ i3lock-custom-n - i3lock-custom with no forking
   -udiskie - runs udiskie (Automounting of USB/Harddrives)
 
 #Commands
-feh --bg-scale ~/lock-screen/wallpaper.png - set wallpaper
+feh --bg-scale ~/wallpaper.png - set wallpaper, must be png otherwise memory issues
 xss-lock -l /usr/bin/i3lock-files/transfer-sleep-lock-i3lock.sh & - setup automatic locking
 exec xcompmgr -c -f -n - Fading and transparency, client side
 

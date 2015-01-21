@@ -168,3 +168,9 @@ bindsym XF86Suspend exec systemctl hibernate
 #Fading and transparency, i3 doesn't support :(
 exec xcompmgr -c -f -n
 
+#Dex autostart /etc/xdg/autostart desktop files
+exec dex -ae i3
+
+#Desktop background
+exec feh --bg-scale ~/wallpaper.png
+
