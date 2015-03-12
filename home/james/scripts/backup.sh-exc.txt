@@ -1,0 +1,18 @@
+# Not old backups                                                               
+/opt/backup/arch-full*  
+
+# Not temporary files                                                           
+/tmp/*
+
+# Not the cache for pacman
+/var/cache/pacman/pkg/*
+
+/proc/*
+
+/media/*
+
+/sys/*
+
+/dev/*
+
+/run/*
