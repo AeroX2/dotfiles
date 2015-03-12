@@ -1,2 +1,0 @@
-#!/bin/sh
-/usr/bin/google-chrome-stable --proxy-pac-url="file:///home/james/scripts/proxy.pac"
