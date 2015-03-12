@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=xss-lock -l /usr/bin/i3lock-files/transfer-sleep-lock-i3lock.sh
+Name=XSS-Lock
+Name[en_US]=XSS-Lock
+Terminal=false
+Type=Application
+Version=1.0
+X-GNOME-Autostart-enabled=true
+X-KDE-autostart-after=panel
+

@@ -1,0 +1,4 @@
+# Suspend the system when battery level drops to 5% or lower
+SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-9]", ENV{DISPLAY}=":0.0", ENV{XAUTHORITY}="/home/james/.Xauthority", RUN+="/usr/bin/i3-nagbar -m 'Low Battery!' &"
+SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-5]", RUN+="/usr/bin/systemctl hibernate"
+
