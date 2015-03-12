@@ -1,15 +1,13 @@
-#alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+alias cp_p='rsync -ah --progress'
 
-alias home='cd ~'
-alias desktop='cd ~/Desktop'
-alias downloads='cd ~/Downloads'
+alias c='clear'
+alias e='exit'
+alias update='sudo -E pacman -Sy'
+alias upgrade='sudo -E pacman -Syu'
 
-alias update='sudo pacman -Sy'
-alias upgrade='sudo pacman -Syu'
-
-alias install='sudo pacman -S '
+alias install='sudo -E pacman -S '
 alias remove='sudo pacman -R '
 alias autoremove='sudo pacman -Rns $(pacman -Qtdq)'
 
@@ -39,3 +37,5 @@ alias clearproxy=clearproxy
 alias vi='vim'
 alias python='python3'
 alias hibernate='systemctl hibernate'
+alias resetdmenu='rm ~/.cache/dmenu_run'
+alias feh='feh --scale-down '

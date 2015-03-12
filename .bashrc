@@ -124,3 +124,5 @@ if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 else
         export TERM='xterm-color'
 fi
+
+synclient HorizTwoFingerScroll=1

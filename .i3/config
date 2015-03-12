@@ -152,25 +152,36 @@ bar {
         status_command i3status -c ~/.i3status.conf
 }
 
+#Default
+default_orientation horizontal
+workspace_layout tabbed
+
 #Guake floating
 for_window [class="Main.py" instance="guake"] floating enable
 
 #Locking Ctrl-Super-l
 bindsym Ctrl+$mod+l exec i3lock-custom
 
+#Xkill
+bindsym Ctrl+$mod+x exec DISPLAY=:0 xkill
+
+#Screenshots
+bindsym Print exec scrot
+
 #Screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
+#Sound
+bindsym $mod+Prior exec amixer -q set Master 2dB+ unmute
+bindsym $mod+Next exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
 #Hibernate
 bindsym XF86Suspend exec systemctl hibernate
-
-#Fading and transparency, i3 doesn't support :(
-exec xcompmgr -c -f -n
 
 #Dex autostart /etc/xdg/autostart desktop files
 exec dex -ae i3
 
 #Desktop background
 exec feh --bg-scale ~/wallpaper.png
-
