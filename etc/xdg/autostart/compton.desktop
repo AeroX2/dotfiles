@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=compton --config /home/james/.config/compton.conf -b
+Name=Compton
+Name[en_US]=CompTon
+Terminal=false
+Type=Application
+Version=1.0
+X-GNOME-Autostart-enabled=true
+X-KDE-autostart-after=panel
+

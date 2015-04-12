@@ -4,12 +4,12 @@ alias cp_p='rsync -ah --progress'
 
 alias c='clear'
 alias e='exit'
-alias update='sudo -E pacman -Sy'
-alias upgrade='sudo -E pacman -Syu'
 
-alias install='sudo -E pacman -S '
-alias remove='sudo pacman -R '
-alias autoremove='sudo pacman -Rns $(pacman -Qtdq)'
+alias pud='sudo pacman -Sy'
+alias pup='sudo pacman -Syu'
+alias pin='sudo pacman -S '
+alias pre='sudo pacman -R '
+alias par='sudo pacman -Rns $(pacman -Qtdq)'
 
 function exportproxy() 
 {
@@ -36,6 +36,6 @@ alias clearproxy=clearproxy
 
 alias vi='vim'
 alias python='python3'
-alias hibernate='systemctl hibernate'
 alias resetdmenu='rm ~/.cache/dmenu_run'
 alias feh='feh --scale-down '
+alias nmap='sudo nmap '
