@@ -1,0 +1,24 @@
+[Unit]
+Description=delayed hibernation trigger
+Before=suspend.target
+StopWhenUnneeded=true
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Environment="WAKEALARM=/sys/class/rtc/rtc0/wakealarm"
+ExecStart=-/bin/sh -c 'echo -n "alarm set for "; date +%%s -d+20min | tee $WAKEALARM'
+ExecStop=-/bin/sh -c '\
+  alarm=$(cat $WAKEALARM); \
+  now=$(date +%%s); \
+  if [ -z "$alarm" ] || [ "$now" -ge "$alarm" ]; then \
+     echo "hibernate triggered"; \
+     systemctl hibernate; \
+  else \
+     echo "normal wakeup"; \
+  fi; \
+  echo 0 > $WAKEALARM; \
+'
+
+[Install]
+WantedBy=sleep.target
