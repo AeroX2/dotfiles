@@ -2,7 +2,7 @@
 # Sets right perspective when monitor is plugged in
 # Needed by udev rule /etc/udev/rules.d/95-hotplug-monitor
 export DISPLAY=:0
-export XAUTHORITY=/home/james/.Xauthority
+export XAUTHORITY=~/.Xauthority
 
 function connect(){
     xrandr --output VGA1 --right-of LVDS1 --preferred --primary --output LVDS1 --preferred

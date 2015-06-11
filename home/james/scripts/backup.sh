@@ -14,7 +14,7 @@ backupfile="$backdest/$distro-$type-$date.tar.gz"
 
 # Exclude file location
 prog=${0##*/} # Program name from filename
-excdir="/home/james/scripts"
+excdir="~/scripts"
 exclude_file="$excdir/$prog-exc.txt"
 echo $exclude_file
 

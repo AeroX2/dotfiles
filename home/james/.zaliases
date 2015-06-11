@@ -5,16 +5,16 @@ alias cp_p='rsync -ah --progress'
 alias c='clear'
 alias e='exit'
 
-alias pud='sudo pacman -Sy'
-alias pup='sudo pacman -Syu'
+alias pup='sudo pacman -Sy'
+alias pug='sudo pacman -Syu'
 alias pin='sudo pacman -S '
 alias pre='sudo pacman -R '
 alias par='sudo pacman -Rns $(pacman -Qtdq)'
 
 function exportproxy() 
 {
-    read -p "User: " username;
-    read -s -p "Password: " password;
+    read "username?User: ";
+    read "password?Password: ";
     echo
 
     export http_proxy='http://'$username':'$password'@proxy.det.nsw.edu.au:8080';

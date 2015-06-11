@@ -20,7 +20,7 @@ Feel free to use them if you want
 #Commands
 1. feh --bg-scale ~/wallpaper.png - set wallpaper, must be png otherwise memory issues
 2. xss-lock -l /usr/bin/i3lock-files/transfer-sleep-lock-i3lock.sh & - setup automatic locking
-3. compton --config /home/james/.config/compton.conf -b - Fading and transparency, daemon mode
+3. compton --config ~/.config/compton.conf -b - Fading and transparency, daemon mode
 4. /usr/bin/i3-nagbar -m 'Low Battery!' & - Run i3-nagbar, red bar at the top of the screen, to remind me to plug in, before it hibernates
 5. systemctl hibernate - Hibernate the system (xss-lock doesn't lock the screen on hibernate when battery is low, 
    Issue: systemctl is running from system not user, but when running from user, systemctl requires interactive authencation :/ )
