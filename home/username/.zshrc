@@ -3,9 +3,14 @@ colors
 compinit
 promptinit
 
+function collapse_pwd {
+	echo $(pwd | sed -e "s,^$HOME,~," | sed -r 's,([^/])[^/]*/,\1/,g')
+}
+
 #Theme
 prompt walters
-PROMPT="%{$fg_bold[green]%}%n@%m %{$reset_color%}%{$fg_bold[blue]%}%1~%{$reset_color%} %{$fg_bold[green]%}$ %{$reset_color%}"
+setopt PROMPT_SUBST
+PROMPT='%{$fg_bold[green]%}%n@%m %{$reset_color%}%{$fg_bold[blue]%}$(collapse_pwd)%{$reset_color%} %{$fg_bold[green]%}$ %{$reset_color%}'
 RPROMPT=""
 
 #Ignore duplicate commands
@@ -97,3 +102,5 @@ date
 echo -e ""; cal;
 
 source ~/.zaliases
+export PATH=$PATH:/opt/android-sdk/build-tools/22.0.1:/opt/android-sdk/platform-tools
+PATH="/usr/local/heroku/bin:$PATH"

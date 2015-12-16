@@ -1,6 +1,7 @@
 alias mv='mv -i'
 alias cp='cp -i'
 alias cp_p='rsync -ah --progress'
+alias rm='safe-rm'
 
 alias c='clear'
 alias e='exit'
@@ -39,3 +40,6 @@ alias python='python3'
 alias resetdmenu='rm ~/.cache/dmenu_run'
 alias feh='feh --scale-down '
 alias nmap='sudo nmap '
+alias top='htop'
+
+alias ncss='cd ~/documents/git/ncss-challenge/2015'

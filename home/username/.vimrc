@@ -1,8 +1,17 @@
-"Not compatible with Vi
 set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-"Pathogen
-execute pathogen#infect()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'bling/vim-airline'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'rdnetto/YCM-Generator'
+
+call vundle#end()
 
 "Making backspace work
 set backspace=indent,eol,start
@@ -15,6 +24,7 @@ set autoread
 set number
 set noerrorbells
 set nowrap
+set noswapfile
 
 "UI
 set number
@@ -54,10 +64,17 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++14 '
+
 "Airline
-let g:airline_enable_syntastic=1
+let g:airline#extensions#syntastic#enabled = 1
 "Please shutup
 let g:airline#extensions#whitespace#enabled = 0
+let g:ycm_confirm_extra_conf=0 
 set laststatus=2
 
 "Searching
@@ -121,8 +138,8 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 "map <C-v> :r!xclip -o<CR>
 
 "Tab handling
-nnoremap <Esc>l :tabprevious<cr>
-nnoremap <Esc>h :tabnext<cr>
+nnoremap <Esc>h :tabprevious<cr>
+nnoremap <Esc>l :tabnext<cr>
 nnoremap <leader>n :tabnew<cr>
 
 "Insert single character
@@ -131,5 +148,5 @@ nmap <Space> i_<Esc>r
 "Replace word with copied word
 nmap <leader>r ciw<C-R>0<Esc>
 
-Save on focus lost
+"Save on focus lost
 au FocusLost * :wa
