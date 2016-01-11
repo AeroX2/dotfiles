@@ -5,11 +5,11 @@ export DISPLAY=:0
 export XAUTHORITY=~/.Xauthority
 
 function connect(){
-    xrandr --output VGA1 --right-of LVDS1 --preferred --primary --output LVDS1 --preferred
+    xrandr --output VGA1 --left-of LVDS1 --preferred --primary --output LVDS1 --preferred
 }
 
 function disconnect(){
       xrandr --output VGA1 --off
 }
 
-xrandr | grep "HDMI1 connected" &> /dev/null && connect || disconnect
+xrandr | grep "VGA1 connected" &> /dev/null && connect || disconnect

@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/james/scripts'
+let g:netrw_dirhist_2='/home/james/downloads/apk-downloader/au.com.mcd.mcdalarm-95/smali/au/com/mcd/mcdalarm/activities'
+let g:netrw_dirhist_3='/home/james/documents/git/neural-network-c'
+let g:netrw_dirhist_4='/home/james/documents/git'
+let g:netrw_dirhist_5='/home/james/documents/git/neural-network-c'
+let g:netrw_dirhist_6='/home/james/documents/git/neural-network-c/src'

@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=udiskie        
+Exec=udiskie -2
 Name=Udiskie           
 Name[en_US]=Udiskie
 Terminal=false
