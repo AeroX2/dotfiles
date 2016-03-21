@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=compton --config ~/.config/compton.conf -b
+Exec=compton --config /home/james/.config/compton.conf -b
 Name=Compton
 Name[en_US]=CompTon
 Terminal=false
