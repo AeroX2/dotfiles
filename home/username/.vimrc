@@ -6,13 +6,18 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'bling/vim-airline'
-Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'altercation/vim-colors-solarized'
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 Plugin 'jiangmiao/auto-pairs'
+
 Plugin 'scrooloose/syntastic'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 
 call vundle#end()
@@ -39,6 +44,7 @@ set modelines=0
 
 "Colors
 set background=dark
+let t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 colorscheme solarized
@@ -102,6 +108,7 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 
 "YouCompleteMe
+let g:ycm_path_to_python_interpreter="/usr/bin/python"
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_confirm_extra_conf=0 
 set laststatus=2

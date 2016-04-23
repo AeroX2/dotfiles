@@ -12,34 +12,9 @@ alias pin='sudo pacman -S '
 alias pre='sudo pacman -R '
 alias par='sudo pacman -Rns $(pacman -Qtdq)'
 
-function exportproxy() 
-{
-    read "username?User: ";
-    read "password?Password: ";
-    echo
-
-    export http_proxy='http://'$username':'$password'@proxy.det.nsw.edu.au:8080';
-    export https_proxy='http://'$username':'$password'@proxy.det.nsw.edu.au:8080';
-    export socks_proxy='http://'$username:$password'@proxy.det.nsw.edu.au:8080';
-    export ftp_proxy='http://'$username':'$password'@proxy.det.nsw.edu.au:8080';
-}
-
-function clearproxy() 
-{
-    unset http_proxy
-    unset https_proxy
-    unset socks_proxy
-    unset ftp_proxy
-}
-
-alias exportproxy=exportproxy
-alias clearproxy=clearproxy
-
 alias vi='vim'
 alias python='python3'
 alias resetdmenu='rm ~/.cache/dmenu_run'
 alias feh='feh --scale-down '
 alias nmap='sudo nmap '
 alias top='htop'
-
-alias ncss='cd ~/documents/git/ncss-challenge/2015'
