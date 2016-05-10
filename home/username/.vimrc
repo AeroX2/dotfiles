@@ -7,6 +7,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
@@ -104,6 +105,7 @@ let g:airline#extensions#whitespace#enabled = 0
 "YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_confirm_extra_conf=0 
+let g:EclimCompletionMethod = 'omnifunc'
 set laststatus=2
 
 "YCM Goto
