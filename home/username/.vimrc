@@ -6,15 +6,21 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'bling/vim-airline'
+
+Plugin 'altercation/vim-colors-solarized'
+
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Valloric/YouCompleteMe'
+
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 Plugin 'jiangmiao/auto-pairs'
+
 Plugin 'scrooloose/syntastic'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
+
+Plugin 'vim-scripts/camelcasemotion'
 
 call vundle#end()
 
@@ -103,6 +109,7 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 
 "YouCompleteMe
+let g:ycm_path_to_python_interpreter="/usr/bin/python"
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_confirm_extra_conf=0 
 let g:EclimCompletionMethod = 'omnifunc'
@@ -112,6 +119,13 @@ set laststatus=2
 nmap <C-B> :YcmCompleter GoTo<cr>
 
 "===KEY BINDINGS===
+
+map w <Plug>CamelCaseMotion_w 
+map b <Plug>CamelCaseMotion_b 
+map e <Plug>CamelCaseMotion_e 
+sunmap w 
+sunmap b 
+sunmap e 
 
 "Remap, no need for shift to insert commands
 nore ; :
