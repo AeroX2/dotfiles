@@ -7,20 +7,18 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'altercation/vim-colors-solarized'
-
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
-Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 
 Plugin 'vim-scripts/camelcasemotion'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 
@@ -41,8 +39,9 @@ set wildmenu
 set wildmode=list:longest
 set mouse=a
 
-"Security
-set modelines=0
+"Modeline was fixed ages ago
+set modeline
+set modelines=5
 
 "Colors
 set background=dark
@@ -120,12 +119,12 @@ nmap <C-B> :YcmCompleter GoTo<cr>
 
 "===KEY BINDINGS===
 
-map w <Plug>CamelCaseMotion_w 
-map b <Plug>CamelCaseMotion_b 
-map e <Plug>CamelCaseMotion_e 
-sunmap w 
-sunmap b 
-sunmap e 
+map <silent> W <Plug>CamelCaseMotion_w
+map <silent> B <Plug>CamelCaseMotion_b
+map <silent> E <Plug>CamelCaseMotion_e
+sunmap W
+sunmap B
+sunmap E
 
 "Remap, no need for shift to insert commands
 nore ; :
@@ -183,8 +182,8 @@ nnoremap <leader>n :tabnew<cr>
 "Copying and pasting
 map <C-C> :w !xclip<CR><CR>
 "CHECK THIS
-vmap <C-C> "*y
-map <C-V> :r!xclip -o<CR>
+"vmap <C-C> "*y
+"map <C-V> :r!xclip -o<CR>
 
 "Insert single character
 nmap <Space> i_<Esc>r

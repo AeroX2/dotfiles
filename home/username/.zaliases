@@ -18,3 +18,5 @@ alias resetdmenu='rm ~/.cache/dmenu_run'
 alias feh='feh --scale-down '
 alias nmap='sudo nmap '
 alias top='htop'
+
+alias yaourt='yaourt --noconfirm'
