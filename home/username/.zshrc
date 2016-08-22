@@ -102,5 +102,3 @@ date
 echo -e ""; cal;
 
 source ~/.zaliases
-export PATH=$PATH:/opt/android-sdk/build-tools/22.0.1:/opt/android-sdk/platform-tools
-PATH="/usr/local/heroku/bin:$PATH"
