@@ -1,7 +1,6 @@
 alias mv='mv -i'
 alias cp='cp -i'
 alias cp_p='rsync -ah --progress'
-alias rm='safe-rm'
 
 alias c='clear'
 alias e='exit'
@@ -13,10 +12,9 @@ alias pre='sudo pacman -R '
 alias par='sudo pacman -Rns $(pacman -Qtdq)'
 
 alias vi='vim'
-alias python='python3'
-alias resetdmenu='rm ~/.cache/dmenu_run'
-alias feh='feh --scale-down '
-alias nmap='sudo nmap '
 alias top='htop'
-
+alias python='python3'
+alias nmap='sudo nmap '
+alias feh='feh --scale-down '
 alias yaourt='yaourt --noconfirm'
+

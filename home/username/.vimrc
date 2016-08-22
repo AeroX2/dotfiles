@@ -9,16 +9,14 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
-
-Plugin 'vim-scripts/camelcasemotion'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 
@@ -53,6 +51,7 @@ colorscheme solarized
 set backspace=indent,eol,start
 
 "Tabs
+set textwidth=80
 set shiftwidth=4
 set tabstop=4
 set noexpandtab
@@ -77,9 +76,8 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
-nnoremap <leader>h :noh<cr>
 
-"CHECK THIS
+"Tab remaps to %
 nnoremap <tab> %
 vnoremap <tab> %
 
@@ -108,9 +106,11 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 
 "YouCompleteMe
-let g:ycm_path_to_python_interpreter="/usr/bin/python"
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_confirm_extra_conf=0 
+let g:ycm_path_to_python_interpreter = "/usr/bin/python"
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_confirm_extra_conf = 0 
+"let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_register_as_syntastic_checker=0
 let g:EclimCompletionMethod = 'omnifunc'
 set laststatus=2
 
@@ -118,13 +118,6 @@ set laststatus=2
 nmap <C-B> :YcmCompleter GoTo<cr>
 
 "===KEY BINDINGS===
-
-map <silent> W <Plug>CamelCaseMotion_w
-map <silent> B <Plug>CamelCaseMotion_b
-map <silent> E <Plug>CamelCaseMotion_e
-sunmap W
-sunmap B
-sunmap E
 
 "Remap, no need for shift to insert commands
 nore ; :
@@ -153,6 +146,8 @@ imap <silent> <Home> <C-O><Home>
 vnoremap < <gv
 vnoremap > >gv
 
+:command! -bar -bang Q quit<bang>
+
 "===LEADER KEY MAPPINGS===
 
 "Leader key
@@ -161,9 +156,13 @@ let mapleader = ","
 "Replace word with copied word
 nmap <leader>r ciw<C-R>0<Esc>
 
+"Clear highlighting
+nnoremap <leader>c :noh<cr>
+
 "===WINDOW AND TAB HANDLING===
 
 "Split panes
+nnoremap <leader>h <C-w>S<C-w>j
 nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -188,3 +187,8 @@ map <C-C> :w !xclip<CR><CR>
 "Insert single character
 nmap <Space> i_<Esc>r
 
+autocmd bufnewfile *.c so ~/.c_header.txt
+autocmd bufnewfile *.c exe "1," . 5 . "g/Creation Date:.*/s//Creation Date: " .strftime("%d-%m-%Y")
+autocmd Bufwritepre,filewritepre *.c execute "normal ma"
+autocmd Bufwritepre,filewritepre *.c exe "1," . 10 . "g/Last Modified:.*/s/Last Modified:.*/Last Modified: " .strftime("%c")
+autocmd bufwritepost,filewritepost *.c execute "normal `a"
