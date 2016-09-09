@@ -4,10 +4,9 @@ Feel free to use them if you want
 #Files
 1. transfer-sleep-lock-i3lock.sh - for xss-lock -l option (Locks computer before suspending/hibernating)
 2. i3lock-custom - color scheme for i3lock with wallpaper needs i3lock-color from AUR
-3. i3lock-custom-n - i3lock-custom with no forking
-4. hotplug-monitor.sh - Called by udev when a monitor is plugged in, extends the screen by adding the monitor to the left
-5. compton.conf - Compton config better than xcompmgr (no more tearing!)
-6. *.desktop files 
+3. hotplug-monitor.sh - Called by udev when a monitor is plugged in, extends the screen by adding the monitor to the left
+4. compton.conf - Compton config better than xcompmgr (no more tearing!)
+5. *.desktop files 
   -guake.desktop - Startup guake (A drop down terminal)
   -xss-lock - runs xss-lock (A way of hooking into the suspend/hibernate so you can lock the screen)
   -udiskie - runs udiskie (Automounting of USB/Harddrives)

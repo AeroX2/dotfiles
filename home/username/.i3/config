@@ -184,7 +184,7 @@ bindsym XF86Suspend exec systemctl hibernate
 exec dex -a
 
 #Desktop background
-exec feh --bg-scale ~/wallpaper.png
+exec feh --bg-scale ~/.i3/wallpaper.png
 
 #Synaptics
 exec synclient HorizTwoFingerScroll=1

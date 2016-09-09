@@ -41,7 +41,7 @@ if [[ -e /dev/fd/${XSS_SLEEP_LOCK_FD:--1} ]]; then
     done
 else
     trap 'kill %%' TERM INT
-    i3lock-custom-n &
+    i3lock-custom -n &
     wait
 fi
 
