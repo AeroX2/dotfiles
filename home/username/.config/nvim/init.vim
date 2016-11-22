@@ -1,4 +1,3 @@
-
 "===VIM PLUGINS===
 
 call plug#begin()
@@ -7,13 +6,19 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
+
 Plug 'neomake/neomake'
-function! DoRemote(arg)
-	UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'mhartington/deoplete-typescript'
 
 Plug 'terryma/vim-multiple-cursors'
+Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
@@ -48,10 +53,12 @@ colorscheme solarized
 set backspace=indent,eol,start
 
 "Tabs
-set textwidth=80
+set textwidth=0
+set wrapmargin=0
 set shiftwidth=4
 set tabstop=4
 set noexpandtab
+set autoindent
 
 "Indenting
 filetype plugin indent on
@@ -92,6 +99,8 @@ let g:neomake_warning_sign = {
             \ }
 autocmd BufWritePost,BufEnter * Neomake
 
+let g:neomake_cpp_clang_args = ["-std=c++14", "-Wextra", "-Wall"]
+
 "Deoplete enable
 let g:deoplete#enable_at_startup = 1
 
@@ -110,14 +119,14 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 "No arrow keys
-map  <up>    <nop>
-imap <up>    <nop>
-map  <down>  <nop>
-imap <down>  <nop>
-map  <left>  <nop>
-map  <right> <nop>
-imap <left>  <nop>
-imap <right> <nop>
+"map  <up>    <nop>
+"imap <up>    <nop>
+"map  <down>  <nop>
+"imap <down>  <nop>
+"map  <left>  <nop>
+"map  <right> <nop>
+"imap <left>  <nop>
+"imap <right> <nop>
 " B A Start Select
 
 "Home maps to first character
@@ -140,11 +149,29 @@ autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 "Leader key
 let mapleader = ","
 
+nnoremap <leader>l :ls<CR>:b<space>
+
 "Replace word with copied word
 nmap <leader>r ciw<C-R>0<Esc>
 
+"Replace word under cursor
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+function! CloseAllBuffersButCurrent()
+  let curr = bufnr("%")
+  let last = bufnr("$")
+
+  if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
+  if curr < last | silent! execute (curr+1).",".last."bd" | endif
+endfunction
+
+nmap <leader>g :call CloseAllBuffersButCurrent()<CR>
+
 "Clear highlighting
 nnoremap <leader>c :noh<cr>
+
+"Paste last yank text
+nnoremap <leader>p "0p
 
 "===WINDOW AND TAB HANDLING===
 
@@ -167,12 +194,6 @@ nnoremap <leader>n :tabnew<cr>
 tnoremap <a-h> <C-\><C-n>:tabprevious<cr>
 tnoremap <a-l> <C-\><C-n>:tabnext<cr>
 
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<leader>m'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-
 "===MISC KEY BINDINGS===
 
 "Neovim term escape to normal mode
@@ -182,8 +203,8 @@ tnoremap <Esc> <C-\><C-n>
 nmap <Space> i_<Esc>r
 
 "Add header to C file
-autocmd bufnewfile *.c so ~/.c_header.txt
-autocmd bufnewfile *.c exe "1," . 5 . "g/Creation Date:.*/s//Creation Date: " .strftime("%d-%m-%Y")
-autocmd Bufwritepre,filewritepre *.c execute "normal ma"
-autocmd Bufwritepre,filewritepre *.c exe "1," . 10 . "g/Last Modified:.*/s/Last Modified:.*/Last Modified: " .strftime("%c")
-autocmd bufwritepost,filewritepost *.c execute "normal `a"
+"autocmd bufnewfile *.c so ~/.c_header.txt
+"autocmd bufnewfile *.c exe "1," . 5 . "g/Creation Date:.*/s//Creation Date: " .strftime("%d-%m-%Y")
+"autocmd Bufwritepre,filewritepre *.c execute "normal ma"
+"autocmd Bufwritepre,filewritepre *.c exe "1," . 10 . "g/Last Modified:.*/s/Last Modified:.*/Last Modified: " .strftime("%c")
+"autocmd bufwritepost,filewritepost *.c execute "normal `a"
