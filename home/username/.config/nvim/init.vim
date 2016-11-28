@@ -11,14 +11,17 @@ Plug 'tpope/vim-repeat'
 
 Plug 'neomake/neomake'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'mhartington/deoplete-typescript'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'carlitux/deoplete-ternjs'
+"Plug 'mhartington/deoplete-typescript'
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ctrlpvim/ctrlp.vim'
 
-Plug 'pangloss/vim-javascript'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 
 call plug#end()
 
@@ -58,6 +61,7 @@ set wrapmargin=0
 set shiftwidth=4
 set tabstop=4
 set noexpandtab
+set smarttab
 set autoindent
 
 "Indenting
@@ -102,11 +106,15 @@ autocmd BufWritePost,BufEnter * Neomake
 let g:neomake_cpp_clang_args = ["-std=c++14", "-Wextra", "-Wall"]
 
 "Deoplete enable
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
 "Airline
 "Shutup Airline
 let g:airline#extensions#whitespace#enabled = 0
+
+"YCM Goto
+nmap <C-B> :YcmCompleter GoToDefinition<cr>
+nmap <C-U> :YcmCompleter GoToReferences<cr>
 
 "===KEY BINDINGS===
 
@@ -141,8 +149,8 @@ vnoremap > >gv
 :command! -bar -bang Q quit<bang>
 
 " Deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+"inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
 "===LEADER KEY MAPPINGS===
 
