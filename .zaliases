@@ -1,0 +1,13 @@
+alias mv='mv -i'
+alias cp='cp -i'
+alias cp_p='rsync -ah --progress'
+
+alias c='clear'
+alias e='exit'
+
+alias par='sudo pacman -Rns $(pacman -Qtdq)'
+
+alias vim='nvim'
+alias top='htop'
+alias nmap='sudo nmap '
+

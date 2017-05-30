@@ -1,0 +1,8 @@
+[Data]
+Name=Vertex-Dark
+Thumbnail=/home/james/.config/XfceThemeManager/meta/Vertex-Dark.png
+GtkTheme=Vertex-Dark
+Xfwm4Theme=Vertex-Dark
+IconTheme=gnome
+CursorTheme=DMZ-Black
+

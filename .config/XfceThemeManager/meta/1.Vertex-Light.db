@@ -1,0 +1,8 @@
+[Data]
+Name=Vertex-Light
+Thumbnail=/home/james/.config/XfceThemeManager/meta/Vertex-Light.png
+GtkTheme=Vertex-Light
+Xfwm4Theme=Vertex-Light
+IconTheme=gnome
+CursorTheme=DMZ-Black
+

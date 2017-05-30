@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="move_tab_right" mtime="1495601248" type="string">
+		<stringvalue>&lt;Primary&gt;braceright</stringvalue>
+	</entry>
+	<entry name="move_tab_left" mtime="1495601244" type="string">
+		<stringvalue>&lt;Primary&gt;braceleft</stringvalue>
+	</entry>
+	<entry name="next_tab" mtime="1495601246" type="string">
+		<stringvalue>&lt;Primary&gt;bracketright</stringvalue>
+	</entry>
+	<entry name="previous_tab" mtime="1495601235" type="string">
+		<stringvalue>&lt;Primary&gt;bracketleft</stringvalue>
+	</entry>
+</gconf>

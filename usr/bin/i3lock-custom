@@ -1,3 +1,0 @@
-#!/bin/sh
-IMAGE=/home/james/.i3/wallpaper.png
-i3lock -l '#FFFFFF' -i $IMAGE $@

@@ -1,0 +1,8 @@
+[Data]
+Name=Arc-Darker
+Thumbnail=/home/james/.config/XfceThemeManager/meta/Arc-Darker.png
+GtkTheme=Arc-Darker
+Xfwm4Theme=Arc-Darker
+IconTheme=gnome
+CursorTheme=DMZ-Black
+

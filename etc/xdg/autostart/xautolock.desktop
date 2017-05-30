@@ -1,9 +1,0 @@
-[Desktop Entry]
-Exec=xautolock -time 10 -locker "i3lock-custom -n" -killtime 10 -killer "systemctl suspend" -corners 000- -cornersize 30 -detectsleep
-Name=XAutolock
-Name[en_US]=XAutolock
-Terminal=false
-Type=Application
-Version=1.0
-X-GNOME-Autostart-enabled=true
-X-KDE-autostart-after=panel

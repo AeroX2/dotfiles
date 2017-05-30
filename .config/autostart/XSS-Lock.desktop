@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.9.4
+Type=Application
+Name=XAutoLock
+Comment=XAutoLock
+Exec=xautolock -time 10 -locker "i3lock-custom -n" -killtime 10 -killer "systemctl suspend" -corners 000- -cornersize 30 -detectsleep
+OnlyShowIn=XFCE;
+StartupNotify=false
+Terminal=false
+Hidden=false
+

@@ -1,2 +1,0 @@
-#Rule for executing commands when an external screen is plugged in.
-KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="~/.Xauthority", RUN+="/usr/bin/hotplug-monitor.sh"
