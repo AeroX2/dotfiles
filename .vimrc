@@ -102,21 +102,20 @@ let g:syntastic_cpp_compiler_options = ' -std=c++14 '
 
 "Airline
 let g:airline#extensions#syntastic#enabled = 1
+
 "Shutup Airline
 let g:airline#extensions#whitespace#enabled = 0
 
-"YouCompleteMe
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_path_to_python_interpreter = "/usr/bin/python"
+"YouCompleteMe settings
+let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_confirm_extra_conf = 0 
-"let g:ycm_show_diagnostics_ui = 0
-"let g:ycm_register_as_syntastic_checker=0
-let g:EclimCompletionMethod = 'omnifunc'
-set laststatus=2
 
 "YCM Goto
-nmap <C-B> :YcmCompleter GoTo<cr>
+nmap <C-B> :YcmCompleter GoToDefinition<cr>
+nmap <C-U> :YcmCompleter GoToReferences<cr>
+
+let g:EclimCompletionMethod = 'omnifunc'
+set laststatus=2
 
 "===KEY BINDINGS===
 
@@ -129,14 +128,14 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 "No arrow keys
-map  <up>    <nop>
-imap <up>    <nop>
-map  <down>  <nop>
-imap <down>  <nop>
-map  <left>  <nop>
-map  <right> <nop>
-imap <left>  <nop>
-imap <right> <nop>
+"map  <up>    <nop>
+"imap <up>    <nop>
+"map  <down>  <nop>
+"imap <down>  <nop>
+"map  <left>  <nop>
+"map  <right> <nop>
+"imap <left>  <nop>
+"imap <right> <nop>
 " B A Start Select
 
 "Home maps to first character
@@ -147,18 +146,41 @@ imap <silent> <Home> <C-O><Home>
 vnoremap < <gv
 vnoremap > >gv
 
-:command! -bar -bang Q quit<bang>
+"Capital versions do the same thing
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
 
 "===LEADER KEY MAPPINGS===
 
 "Leader key
 let mapleader = ","
 
+"Show open buffers
+nnoremap <leader>l :ls<CR>:b<space>
+
 "Replace word with copied word
-nmap <leader>r ciw<C-R>0<Esc>
+nmap <leader>r ciw<C-r>0<ESC>x
+
+"Replace word under cursor
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//<Left>
+
+function! CloseAllBuffersButCurrent()
+  let curr = bufnr("%")
+  let last = bufnr("$")
+
+  if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
+  if curr < last | silent! execute (curr+1).",".last."bd" | endif
+endfunction
+
+nmap <leader>g :call CloseAllBuffersButCurrent()<CR>
 
 "Clear highlighting
 nnoremap <leader>c :noh<cr>
+
+"Copy to system clipboard
+nnoremap <leader>y "+y
 
 "===WINDOW AND TAB HANDLING===
 
@@ -174,22 +196,16 @@ nnoremap <C-l> <C-w>l
 nnoremap <Esc>h :tabprevious<cr>
 nnoremap <Esc>l :tabnext<cr>
 nnoremap <Esc>H :tabmove -1<cr>
-nnoremap <Esc>L :tabmove<cr>
+nnoremap <Esc>L :tabmove +1<cr>
 nnoremap <leader>n :tabnew<cr>
 
 "===MISC KEY BINDINGS===
 
-"Copying and pasting
-map <C-C> :w !xclip<CR><CR>
-"CHECK THIS
-"vmap <C-C> "*y
-"map <C-V> :r!xclip -o<CR>
-
 "Insert single character
 nmap <Space> i_<Esc>r
 
-autocmd bufnewfile *.c so ~/.c_header.txt
-autocmd bufnewfile *.c exe "1," . 5 . "g/Creation Date:.*/s//Creation Date: " .strftime("%d-%m-%Y")
-autocmd Bufwritepre,filewritepre *.c execute "normal ma"
-autocmd Bufwritepre,filewritepre *.c exe "1," . 10 . "g/Last Modified:.*/s/Last Modified:.*/Last Modified: " .strftime("%c")
-autocmd bufwritepost,filewritepost *.c execute "normal `a"
+"autocmd bufnewfile *.c so ~/.c_header.txt
+"autocmd bufnewfile *.c exe "1," . 5 . "g/Creation Date:.*/s//Creation Date: " .strftime("%d-%m-%Y")
+"autocmd Bufwritepre,filewritepre *.c execute "normal ma"
+"autocmd Bufwritepre,filewritepre *.c exe "1," . 10 . "g/Last Modified:.*/s/Last Modified:.*/Last Modified: " .strftime("%c")
+"autocmd bufwritepost,filewritepost *.c execute "normal `a"

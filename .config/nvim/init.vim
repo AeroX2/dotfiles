@@ -12,9 +12,6 @@ Plug 'tpope/vim-repeat'
 Plug 'neomake/neomake'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'carlitux/deoplete-ternjs'
-"Plug 'mhartington/deoplete-typescript'
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -22,6 +19,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
+
+Plug 'eagletmt/neco-ghc'
+Plug 'dag/vim2hs'
 
 call plug#end()
 
@@ -105,12 +105,13 @@ autocmd BufWritePost,BufEnter * Neomake
 
 let g:neomake_cpp_clang_args = ["-std=c++14", "-Wextra", "-Wall"]
 
-"Deoplete enable
-"let g:deoplete#enable_at_startup = 1
-
 "Airline
 "Shutup Airline
 let g:airline#extensions#whitespace#enabled = 0
+
+"YouCompleteMe settings
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 "YCM Goto
 nmap <C-B> :YcmCompleter GoToDefinition<cr>
@@ -145,25 +146,25 @@ imap <silent> <Home> <C-O><Home>
 vnoremap < <gv
 vnoremap > >gv
 
-"Captial Q also quits
-:command! -bar -bang Q quit<bang>
-
-" Deoplete tab-complete
-"inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-"autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+"Capital versions do the same thing
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
 
 "===LEADER KEY MAPPINGS===
 
 "Leader key
 let mapleader = ","
 
+"Show open buffers
 nnoremap <leader>l :ls<CR>:b<space>
 
 "Replace word with copied word
-nmap <leader>r ciw<C-R>0<Esc>
+nmap <leader>r ciw<C-r>0<ESC>x
 
 "Replace word under cursor
-nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//<Left>
 
 function! CloseAllBuffersButCurrent()
   let curr = bufnr("%")
@@ -178,8 +179,8 @@ nmap <leader>g :call CloseAllBuffersButCurrent()<CR>
 "Clear highlighting
 nnoremap <leader>c :noh<cr>
 
-"Paste last yank text
-nnoremap <leader>p "0p
+"Copy to system clipboard
+nnoremap <leader>y "+y
 
 "===WINDOW AND TAB HANDLING===
 
@@ -195,7 +196,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <a-h> :tabprevious<cr>
 nnoremap <a-l> :tabnext<cr>
 nnoremap <a-H> :tabmove -1<cr>
-nnoremap <a-L> :tabmove<cr>
+nnoremap <a-L> :tabmove +1<cr>
 nnoremap <leader>n :tabnew<cr>
 
 "Tab handling in neovim terminal
@@ -209,6 +210,8 @@ tnoremap <Esc> <C-\><C-n>
 
 "Insert single character
 nmap <Space> i_<Esc>r
+
+autocmd Filetype haskell setlocal tabstop=8 expandtab softtabstop=4 shiftwidth=4 shiftround
 
 "Add header to C file
 "autocmd bufnewfile *.c so ~/.c_header.txt
