@@ -33,7 +33,12 @@ set autoread
 set number
 set noerrorbells
 set nowrap
-set noswapfile
+
+set backup
+set writebackup
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
 
 "UI
 set number
@@ -180,6 +185,7 @@ nmap <leader>g :call CloseAllBuffersButCurrent()<CR>
 nnoremap <leader>c :noh<cr>
 
 "Copy to system clipboard
+set clipboard+=unnamedplus
 nnoremap <leader>y "+y
 
 "===WINDOW AND TAB HANDLING===
