@@ -11,7 +11,8 @@ Plug 'tpope/vim-repeat'
 
 Plug 'neomake/neomake'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -108,13 +109,15 @@ let g:neomake_warning_sign = {
             \ }
 autocmd BufWritePost,BufEnter * Neomake
 
-let g:neomake_cpp_clang_args = ["-std=c++14", "-Wextra", "-Wall"]
+let g:neomake_cpp_enabled_makers=['clang']
+let g:neomake_cpp_clang_args = ["-std=c++14"]
 
 "Airline
 "Shutup Airline
 let g:airline#extensions#whitespace#enabled = 0
 
 "YouCompleteMe settings
+let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 
