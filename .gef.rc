@@ -1,0 +1,118 @@
+[context]
+clear_screen = False
+enable = False
+ignore_registers = 
+layout = regs stack code source memory threads trace extra
+nb_lines_backtrace = 10
+nb_lines_code = 5
+nb_lines_stack = 8
+peek_calls = True
+redirect = 
+show_registers_raw = False
+show_stack_raw = False
+use_capstone = False
+
+[dereference]
+max_recursion = 7
+
+[entry-break]
+entrypoint_symbols = main _main __libc_start_main __uClibc_main start _start
+
+[gef]
+autosave_breakpoints_file = 
+debug = False
+disable_color = False
+extra_plugins_dir = 
+follow_child = True
+readline_compat = False
+
+[heap-analysis-helper]
+check_double_free = True
+check_free_null = False
+check_heap_overlap = True
+check_uaf = True
+check_weird_free = True
+
+[ida-interact]
+host = 127.0.0.1
+port = 1337
+sync_cursor = False
+
+[pattern]
+length = 10240
+
+[pcustom]
+struct_path = /tmp/gef/structs
+
+[process-search]
+ps_command = /bin/ps auxww
+
+[retdec]
+key = 
+path = /tmp/gef
+
+[theme]
+context_title_line = green bold
+context_title_message = red bold
+default_title_line = green bold
+default_title_message = red bold
+dereference_base_address = bold green
+dereference_code = red
+dereference_register_value = bold green
+dereference_string = green
+registers_register_name = bold red
+xinfo_title_message = blue bold
+
+[trace-run]
+max_tracing_recursion = 1
+tracefile_prefix = ./gef-trace-
+
+[unicorn-emulate]
+show_disassembly = False
+verbose = False
+
+[aliases]
+status = process-status
+dt = pcustom
+decompile = retdec
+binaryninja-interact = ida-interact
+bn = ida-interact
+binja = ida-interact
+grep = search-pattern
+xref = search-pattern
+flags = edit-flags
+mprotect = set-permission
+emulate = unicorn-emulate
+cs-dis = capstone-disassemble
+sc-search = shellcode search
+sc-get = shellcode get
+asm = assemble
+ps = process-search
+start = entry-break
+ctx = context
+dq = hexdump qword
+dd = hexdump dword
+dw = hexdump word
+dc = hexdump byte
+eq = patch qword
+ed = patch dword
+ew = patch word
+eb = patch byte
+ea = patch string
+stack = dereference $sp L10
+dps = dereference
+telescope = dereference
+fmtstr-helper = format-string-helper
+pchar = printchar
+screen-setup = tmux-setup
+uf = disassemble
+bc = delete breakpoints
+tbp = tbreak
+bd = disable breakpoints
+bl = info breakpoints
+kp = info stack
+pa = advance
+bp = break
+ptc = finish
+be = enable breakpoints
+
