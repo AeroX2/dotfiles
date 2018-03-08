@@ -1,24 +1,24 @@
+"===VIM PLUGINS=== 
+call plug#begin()
 
-"===VIM PLUGINS===
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'miyakogi/seiya.vim'
+Plug 'NLKNguyen/papercolor-theme'
 
-Plugin 'gmarik/Vundle.vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'altercation/vim-colors-solarized'
+Plug 'neomake/neomake'
+Plug 'vim-syntastic/syntastic'
 
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-abolish'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
-Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'ctrlpvim/ctrlp.vim'
 
-call vundle#end()
+call plug#end()
 
 "Basic stuff.
 set encoding=utf-8
@@ -28,7 +28,12 @@ set autoread
 set number
 set noerrorbells
 set nowrap
-set noswapfile
+
+set backup
+set writebackup
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
 
 "UI
 set number
@@ -43,18 +48,20 @@ set modelines=5
 
 "Colors
 set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-colorscheme solarized
+colorscheme PaperColor
+let g:seiya_auto_enable=1
 
 "Making backspace work
 set backspace=indent,eol,start
 
 "Tabs
-set textwidth=80
+set textwidth=0
+set wrapmargin=0
 set shiftwidth=4
 set tabstop=4
 set noexpandtab
+set smarttab
+set autoindent
 
 "Indenting
 filetype plugin indent on
@@ -86,19 +93,20 @@ au FocusLost * :wa
 
 "===PLUGINS===
 
-"Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"Mimic syntastic in neomake
+let g:neomake_error_sign = {
+            \ 'text': '>>',
+            \ 'texthl': 'ErrorMsg',
+            \ }
+hi MyWarningMsg ctermbg=3 ctermfg=0
+let g:neomake_warning_sign = {
+            \ 'text': '>>',
+            \ 'texthl': 'MyWarningMsg',
+            \ }
+autocmd BufWritePost,BufEnter * Neomake
 
-"CHECK THIS
-"let g:syntastic_enable_signs=1
-
-"Syntatic compiler options
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = ' -std=c++14 '
+let g:neomake_cpp_enabled_makers=['clang']
+let g:neomake_cpp_clang_args = ["-std=c++14"]
 
 "Airline
 let g:airline#extensions#syntastic#enabled = 1
@@ -107,6 +115,7 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 
 "YouCompleteMe settings
+let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 
@@ -180,6 +189,7 @@ nmap <leader>g :call CloseAllBuffersButCurrent()<CR>
 nnoremap <leader>c :noh<cr>
 
 "Copy to system clipboard
+set clipboard=unnamed
 nnoremap <leader>y "+y
 
 "===WINDOW AND TAB HANDLING===
@@ -193,13 +203,20 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 "Tab handling
-nnoremap <Esc>h :tabprevious<cr>
-nnoremap <Esc>l :tabnext<cr>
-nnoremap <Esc>H :tabmove -1<cr>
-nnoremap <Esc>L :tabmove +1<cr>
+nnoremap <a-h> :tabprevious<cr>
+nnoremap <a-l> :tabnext<cr>
+nnoremap <a-H> :tabmove -1<cr>
+nnoremap <a-L> :tabmove +1<cr>
 nnoremap <leader>n :tabnew<cr>
 
+"Tab handling in neovim terminal
+tnoremap <a-h> <C-\><C-n>:tabprevious<cr>
+tnoremap <a-l> <C-\><C-n>:tabnext<cr>
+
 "===MISC KEY BINDINGS===
+
+"Neovim term escape to normal mode
+tnoremap <Esc> <C-\><C-n>
 
 "Insert single character
 nmap <Space> i_<Esc>r

@@ -1,28 +1,22 @@
-"===VIM PLUGINS===
-
+"===VIM PLUGINS=== 
 call plug#begin()
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
+Plug 'miyakogi/seiya.vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
 
 Plug 'neomake/neomake'
+Plug 'vim-syntastic/syntastic'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ctrlpvim/ctrlp.vim'
-
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
-
-Plug 'eagletmt/neco-ghc'
-Plug 'dag/vim2hs'
 
 call plug#end()
 
@@ -53,10 +47,14 @@ set modeline
 set modelines=5
 
 "Colors
+"if &term =~ '256color'
+"    set t_ut=
+"endif
 set background=dark
+colorscheme PaperColor
+
 let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-colorscheme solarized
+let g:seiya_auto_enable=1
 
 "Making backspace work
 set backspace=indent,eol,start
@@ -188,7 +186,7 @@ nmap <leader>g :call CloseAllBuffersButCurrent()<CR>
 nnoremap <leader>c :noh<cr>
 
 "Copy to system clipboard
-set clipboard+=unnamedplus
+set clipboard=unnamed
 nnoremap <leader>y "+y
 
 "===WINDOW AND TAB HANDLING===
@@ -219,12 +217,3 @@ tnoremap <Esc> <C-\><C-n>
 
 "Insert single character
 nmap <Space> i_<Esc>r
-
-autocmd Filetype haskell setlocal tabstop=8 expandtab softtabstop=4 shiftwidth=4 shiftround
-
-"Add header to C file
-"autocmd bufnewfile *.c so ~/.c_header.txt
-"autocmd bufnewfile *.c exe "1," . 5 . "g/Creation Date:.*/s//Creation Date: " .strftime("%d-%m-%Y")
-"autocmd Bufwritepre,filewritepre *.c execute "normal ma"
-"autocmd Bufwritepre,filewritepre *.c exe "1," . 10 . "g/Last Modified:.*/s/Last Modified:.*/Last Modified: " .strftime("%c")
-"autocmd bufwritepost,filewritepost *.c execute "normal `a"

@@ -6,7 +6,7 @@ options="--timecolor=ffffffff --datecolor=ffffffff \
 	   --insidecolor=ffffff1c --insidevercolor=0000001c \ 
        	   --insidewrongcolor=0000001c -k "
 if [ "$1" == "startup" ]; then
-	options+="-i /home/james/pictures/i3lock.png"
+	options+="-i /home/james/pictures/i3lock.jpg"
 elif [ "$1" == "fork" ]; then
 	options+="-n -B -"
 else
