@@ -167,7 +167,7 @@ let mapleader = ","
 nnoremap <leader>l :ls<CR>:b<space>
 
 "Replace word with copied word
-nmap <leader>r ciw<C-r>0<ESC>x
+nmap <leader>r ciw<C-r>0<ESC>
 
 "Replace word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>//<Left>
@@ -186,7 +186,7 @@ nmap <leader>g :call CloseAllBuffersButCurrent()<CR>
 nnoremap <leader>c :noh<cr>
 
 "Copy to system clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
 nnoremap <leader>y "+y
 
 "===WINDOW AND TAB HANDLING===
