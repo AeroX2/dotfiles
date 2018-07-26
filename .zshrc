@@ -11,8 +11,9 @@ function collapse_pwd {
 prompt walters
 setopt prompt_sp
 setopt PROMPT_SUBST
-PROMPT='%{$fg_bold[green]%}%n@%m %{$reset_color%}%{$fg_bold[blue]%}$(collapse_pwd)%{$reset_color%} %'
+PROMPT='%{$fg_bold[green]%}%n@%m %{$reset_color%}%{$fg_bold[blue]%}$(collapse_pwd)%{$reset_color%} %{$fg_bold[green]%}$ %{$reset_color%}'
 RPROMPT=""
+
 
 #Ignore duplicate commands
 setopt histignoredups
