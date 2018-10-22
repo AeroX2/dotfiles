@@ -17,6 +17,13 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ctrlpvim/ctrlp.vim'
+ 
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}	
+Plug 'leafgarland/typescript-vim'	
+Plug 'Quramy/tsuquyomi'
+
+Plug 'tmhedberg/SimpylFold'
+Plug 'numirias/semshi'
 
 call plug#end()
 
@@ -47,13 +54,8 @@ set modeline
 set modelines=5
 
 "Colors
-"if &term =~ '256color'
-"    set t_ut=
-"endif
 set background=dark
 colorscheme PaperColor
-
-let g:solarized_termcolors=256
 let g:seiya_auto_enable=1
 
 "Making backspace work
@@ -73,6 +75,9 @@ filetype plugin indent on
 
 "Syntax
 syntax on
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 "Suffixes (lower priority tab completion)
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
@@ -111,6 +116,8 @@ let g:neomake_cpp_enabled_makers=['clang']
 let g:neomake_cpp_clang_args = ["-std=c++14"]
 
 "Airline
+let g:airline#extensions#syntastic#enabled = 1
+
 "Shutup Airline
 let g:airline#extensions#whitespace#enabled = 0
 
@@ -122,6 +129,9 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 "YCM Goto
 nmap <C-B> :YcmCompleter GoToDefinition<cr>
 nmap <C-U> :YcmCompleter GoToReferences<cr>
+
+let g:EclimCompletionMethod = 'omnifunc'
+set laststatus=2
 
 "===KEY BINDINGS===
 

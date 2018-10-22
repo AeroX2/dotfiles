@@ -15,5 +15,5 @@ fi
 # exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
-i3lock-custom
-exec i3
+i3lock-custom startup
+exec startxfce4
