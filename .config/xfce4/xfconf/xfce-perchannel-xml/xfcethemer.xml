@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<channel name="xfcethemer" version="1.0">
-  <property name="ThemesHash" type="string" value="6fd5fec992a5894ee09f9a5ed28670bd"/>
-  <property name="MetaTheme" type="string" value="DEADBEEF"/>
-  <property name="WindowHeight" type="int" value="1016"/>
-  <property name="WindowWidth" type="int" value="1920"/>
-</channel>
