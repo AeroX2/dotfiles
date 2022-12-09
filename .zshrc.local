@@ -1,0 +1,56 @@
+autoload -U compinit promptinit colors bashcompinit
+colors
+compinit
+promptinit
+bashcompinit
+
+function collapse_pwd {
+	echo $(pwd | sed -e "s,^$HOME,~," | sed -r 's,([^/])[^/]*/,\1/,g')
+}
+
+#Theme
+prompt walters
+setopt prompt_sp
+setopt PROMPT_SUBST
+PROMPT='%{$fg_bold[green]%}%n@%m %{$reset_color%}%{$fg_bold[blue]%}$(collapse_pwd)%{$reset_color%} %{$fg_bold[green]%}$ %{$reset_color%}'
+RPROMPT=""
+
+#Ignore duplicate commands
+setopt histignoredups
+
+bindkey -e
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey '^H' backward-kill-word
+
+#Autocomplete from both ends
+setopt completeinword
+
+#Tab completion case insensitive
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+#Killall completion
+zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
+
+#Share history
+HISTFILE=~/.zhistory
+HISTSIZE=SAVEHIST=10000
+setopt sharehistory
+setopt extendedhistory
+
+#Welcome message
+clear
+cat ~/.zsh_banner
+echo -e ""
+echo "`uname -o` (`uname -sr`)"
+date
+echo -e ""; cal;
+
+source ~/.zaliases
+
+source /usr/share/bash-completion/completions/eopkg
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=14"
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
